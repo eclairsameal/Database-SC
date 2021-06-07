@@ -1,7 +1,7 @@
 idol_id,idol_name,idol_unit,idol_cv,idol_age,idol_height,idol_birthday,idol_birthplace,idol_bloodtype
 CHAR(10),CHAR(20),CHAR(50),CHAR(20),INT,INT,DATE,CHAR(10),CHAR(5)
 1,1,1,1,0,0,0,0,0
-idol_id,,,,,,,,
+1,0,0,0,0,0,0,0,0
 idol01,櫻木 真乃,illumination STARS,関根瞳,16,155,2005-04-25,東京,A
 idol02,風野 灯織,illumination STARS,近藤玲奈,15,154,2006-03-04,東京,A
 idol03,八宮 めぐる,illumination STARS,峯田茉優,16,157,2005-07-22,アメリカ,O
