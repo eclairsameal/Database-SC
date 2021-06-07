@@ -22,13 +22,16 @@ SQL 語法使用分號 ; 當作結尾，英文字母不區分大小寫，單字�
 
 ### DDL（Data Definition Language）
 DDL 又稱為資料定義語言，主要用來定義資料庫的結構，能建立或刪除資料庫和資料表等用來儲存的單位。
+
 [基本語法](https://hackmd.io/BbsOAfY9T5Sb1iVotEIefQ?edit)
 [](https://)
 ###  DML（Data Manipulation Language）
 DML 能查詢或修改資料表的紀錄。
 
 [INSERT INTO](https://hackmd.io/FpqLSy04Q1qLGYNf1Mceqw?both)
+
 [UPDATE](https://hackmd.io/iaxLtQ_pQT-v09Y3BPr3_Q?both)
+
 [SELECT](https://hackmd.io/cN20hSX6Sf-nD5dbcq6ALQ)
 
 ###  DCL（Data Control Language）
