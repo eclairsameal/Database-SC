@@ -41,9 +41,26 @@ with open(filename, "r", encoding="utf-8") as f:
     column_notnull = next(csvreader) # 是否能為空值
     primarykey = next(csvreader)     # 是否為主鍵)
     rowslist = list(csvreader)       # 資料
-
 print(f'headers: {headers}')
 print(f'column_type: {column_type}')
 print(f'column_notnull: {column_notnull}')
 print(f'primarykey: {primarykey}')
 print(rowslist)
+
+# 連接資料庫並建立資料表
+db_settings["database"] = database
+tablename = "idol"
+sql = "CREATE TABLE " + tablename + "("
+try:
+    conn = pymysql.connect(**db_settings)    # 建立Connection物件
+    # 建立Cursor物件
+    with conn.cursor() as cursor:
+        # 創建 database
+        headers_len = len(headers)
+        column_set_string = [headers[i] + " "+ column_type[i] + " NOT NULL,"if column_notnull[i] == "1" 
+                             else headers[i] + " "+ column_type[i] + " ,"for i in range(headers_len)]
+        print(column_set_string)
+
+        #cursor.execute(sql)    # 執行 sql 
+except Exception as ex:
+    print(ex)
