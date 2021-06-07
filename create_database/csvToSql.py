@@ -6,14 +6,14 @@ with open(filename, encoding="utf-8") as csvFile:    # 開啟檔案
 #print(listReport)
 
 title = listReport.pop(0) # 取出屬性欄位
-print("pop = {}".format(title))
+# print("pop = {}".format(title))
 
-# 寫死
+# 寫死直接帶入
 # INSERT INTO idol VALUES ( "idol01", "櫻木 真乃", "illumination STARS", "関根瞳", 16, 155, "2005-04-25", "東京", "A");
 for row in listReport:
-    sql_insert = """ INSERT INTO idol VALUES ( "{}", "{}", "{}", "{}", {}, {}, "{}", "{}", "{}"); """.format(
-        row[0], row[1], row[2], row[3], int(row[4]), int(row[5]), row[6], row[7], row[8],)
-    print(sql_insert)
+    sql_insert = " INSERT INTO idol VALUES ( \"{}\", \"{}\", \"{}\", \"{}\", {}, {}, \"{}\", \"{}\", \"{}\"); ".format(
+        row[0], row[1], row[2], row[3], int(row[4]), int(row[5]), row[6], row[7], row[8])
+    #print(sql_insert)
 
 # 判斷屬性欄位來產生語法
 title_len = len(title)
@@ -21,7 +21,21 @@ for row in listReport:
     sql_insert = "INSERT INTO idol VALUES ("
     for i in range(title_len):
         if i == title_len-1:
-            sql_insert += """"{}");""".format(row[i])
+            sql_insert += " \"{}\"); ".format(row[i])
         else:
-            sql_insert += """ "{}", """.format(row[i])
-    print(sql_insert)
+            sql_insert += " \"{}\", ".format(row[i])
+    #print(sql_insert)
+
+# 判斷屬性欄位來產生語法，並將結果寫到 insert.sql 裡
+output_fn = "insert.sql"
+with open(output_fn, 'w', encoding = "utf-8") as file_output:
+    title_len = len(title)
+    for row in listReport:
+        sql_insert = "INSERT INTO idol VALUES ("
+        for i in range(title_len):
+            if i == title_len-1:
+                sql_insert += "\"{}\");".format(row[i])
+            else:
+                sql_insert += "\"{}\", ".format(row[i])
+        print(sql_insert)
+        file_output.write(sql_insert+"\n")
