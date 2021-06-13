@@ -61,8 +61,14 @@ try:
         sql = "CREATE TABLE " + tablename + "(" + ''.join(column_set_string)
         # 主鍵 SQL
         sql += ''.join(["PRIMARY KEY(" + headers[i] for i in range(headers_len)if primarykey[i] == "1"]) + "));"
-        # print(sql)
-        cursor.execute(sql)    # 執行 sql 
+        #print(sql)
+        cursor.execute(sql)    # 執行 sql
+        # 有修正空間
+        sql_insert = "INSERT INTO idol \
+        (idol_id,idol_name,idol_unit,idol_cv,idol_age,idol_height,idol_birthday,idol_birthplace,idol_bloodtype) \
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        cursor.executemany(sql_insert, rowslist)
+        conn.commit()
 except Exception as ex:
     print(ex)
 
