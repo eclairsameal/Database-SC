@@ -37,3 +37,7 @@ DML 能查詢或修改資料表的紀錄。
 ###  DCL（Data Control Language）
 DCL 為可用來取消操作和設定操作權限的指令。
 
+## 自動化
+[用python產生SQL檔](https://hackmd.io/sRMRyDzTQpaiN_MoAZiezw?edit)
+
+[利用 Python 建構 Database](https://hackmd.io/cfQI4CXcQC6YgpYtuP7zrA)
